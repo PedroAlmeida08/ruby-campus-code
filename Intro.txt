@@ -1,0 +1,158 @@
+puts = imprime conteúdo
+gets = recebe conteúdo
+O gets em Ruby guarda todo o texto digitado, inclusive o Enter, que é reconhecido pelo código \n no final do texto.
+Para limpar a string com seu nome desse caractere você pode usar o método chomp(), que “come” essa marcação.
+
+Métodos para Strings:
+
+.lenght() = obtém tamanho da Strings
+.upcase() = letras maiúsculas
+.downcase() = letras minúsculas
+
+.to_s() = To String
+.to_i() = To Integer
+.to_f() = To Float
+
+Também podemos inserir código Ruby no meio de uma string utilizando a interpolação. 
+Para isso basta usar a notação #{seu_codigo} dentro de uma string usando aspas duplas. Por exemplo:
+
+nome = 'Joaquim'
+puts("Meu nome tem #{nome.length().to_s()} caracteres")
+
+É uma convenção de programadores Ruby usar aspas duplas somente quando houver interpolação e nos outros casos usar aspas simples.
+
+Métodos para Números:
+
+.positive?()
+.negative?()
+.odd?()
+
+Os operadores && e || operam em “curto circuito”. Isso significa que se em uma expressão com && a primeira avaliação (da esquerda) for falsa, 
+a segunda não será avaliada (por que não há necessidade). Já no caso do ||, a segunda expressão só será avaliada se a primeira for falsa.
+
+Arrays:
+
+alunos = ['André', 'Pedro', 'Carolina']
+alunos[0] # "André"
+alunos[1] # "Pedro"
+alunos[-1] # último elemento do array, nesse caso, "Carolina"
+
+alunos << 'Laura' # adiciona o valor "Laura" na última posição do array alunos 
+alunos.pop() # remove o último valor do array, nesse caso, “Laura”
+
+Métodos para Arrays:
+
+.first()
+.last()
+.length()
+.delete(valor_a_ser_deletado)
+
+Em Ruby temos o hash e o symbol que são tipos de dados muito utilizados, mas que não estão disponíveis em todas as linguagens.
+
+SYMBOLS
+Symbols são muito semelhantes às strings, mas ao invés de usar aspas, colocamos : para defini-los.
+
+“caneca” # string 
+:caneca  # symbol
+A grande diferença entre symbol e string é a forma como o Ruby armazena esses tipos de dados em memória. 
+Toda vez que criamos uma string, um novo espaço de memória é alocado para armazená-la, mesmo que seja declarada várias vezes a mesma string.
+
+Os symbols são normalmente usados quando precisamos de identificadores. 
+Em Ruby, quando é feita uma comparação entre strings, ele precisa verificar cada caractere para saber se há igualdade. 
+Já no caso de symbols, basta fazer uma comparação entre números inteiros (object_id), o que é muito mais rápido e eficiente.
+
+O hash, que é um conjunto de pares com uma chave e um valor. Com ele, podemos nomear nossos atributos, como um dicionário.
+
+aluno = { nome: 'João', nota: 7, disciplina: 'Ciências' }
+puts aluno[:nome]
+puts aluno[:disciplina]
+aluno[:nome] = 'Maria'
+puts aluno[:nome]
+Para criar um hash em Ruby basta usar chaves {} e, dentro dessas chaves, declarar os pares de chave e valor separados por :. 
+Para acessar um dado de um hash, basta usar colchetes [] com a chave correspondente. 
+O comando retornará o valor associado à chave. 
+Caso a chave não exista, será retornado nil (nulo).
+
+Estruturas Condicionais
+
+numero = 1
+outro_numero = 20
+
+if numero == outro_numero 
+  puts 'Os números são iguais'
+else
+  puts 'Os números são diferentes'
+end
+
+Switch / Case
+
+nota = 7
+case nota
+when 0
+  puts 'Você tirou zero! Precisa melhorar…'
+when 1..4
+  puts 'Reprovado… precisa se esforçar mais...'
+when 5
+  puts 'Passou raspando!'
+when 6..9
+  puts 'Parabéns, você foi aprovado.'
+else
+  puts 'Tirou 10! Você deve ser o melhor aluno que já tive!'
+end 
+
+While
+
+tecla_pressionada = 's'
+alunos = []
+
+while tecla_pressionada == 's' do
+  puts 'Digite o nome do aluno: '
+  nome_aluno = gets.chomp
+
+  puts 'Digite a nota do aluno: '
+  nota_aluno = gets.chomp.to_f
+
+  puts 'Digite a disciplina: '
+  disciplina_aluno = gets.chomp
+
+  aluno = { nome: nome_aluno, nota: nota_aluno, disciplina: disciplina_aluno }
+  alunos << aluno
+
+  puts 'Deseja inserir um novo aluno? s ou n'
+  tecla_pressionada = gets.chomp.downcase
+end
+
+For 
+Para percorrer itens de um array, por exemplo, temos a opção de usar o método each. 
+Ao acionar esse método devemos definir uma variável que vai representar cada item do array durante o loop. No exemplo abaixo a variável que usamos é um_aluno.
+
+alunos.each do |um_aluno|
+  puts(um_aluno[:nome])
+end
+
+Com o uso do each vimos um novo elemento do Ruby em ação: os blocos. 
+Todo código presente entre o do e o end representa um bloco e esse bloco é usado como parâmetro para o each. 
+
+# Forma 1 de Imprimir um Array
+# for receita in receitas do
+#     puts(receita)
+# end
+
+# Forma 2 de Imprimir um Array
+# receitas.each() do |receita|
+#     puts(receita)
+# end
+
+# Forma 3 de Imprimir um Array
+# puts(receitas)
+# puts()
+
+Métodos
+Diferente das outras linguagens, os métodos em Ruby sempre retornam alguma coisa, mesmo que seja nil (nulo). 
+Esse retorno não precisa ser explícito com a palavra return como no exemplo, já que a última operação é retornada automaticamente.
+
+def soma_valores(valor1, valor2) #os parênteses são opcionais
+  valor1 + valor2
+end
+
+
